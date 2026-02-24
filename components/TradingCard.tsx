@@ -8,78 +8,79 @@ interface TradingCardProps {
 
 // Helper to determine styling based on theme
 const getThemeStyles = (themeName: string) => {
-  const base = "relative w-[325px] h-[455px] rounded-xl overflow-hidden shadow-2xl transition-transform hover:scale-[1.02] hover:shadow-3xl duration-500 select-none flex-shrink-0";
+  const base = "relative w-[325px] h-[455px] rounded-3xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.02] duration-500 select-none flex-shrink-0 border-4 border-white bg-white";
   
+  // Default Style (Mint/Blush)
   let styles = {
-    container: `${base} bg-gray-200 text-gray-900 font-sans border-[8px] border-yellow-500`,
-    header: "bg-yellow-100/90 border-b-2 border-yellow-600/50",
-    name: "text-slate-900 font-serif",
-    statsBadge: "bg-red-500 text-white",
-    artBorder: "border-4 border-yellow-600/30",
-    abilityBox: "bg-yellow-50/80",
-    footer: "bg-yellow-200/50 text-yellow-900",
-    wishBox: "bg-yellow-200/40 border-yellow-600/20",
-    foil: false,
-    backGradient: "bg-gradient-to-br from-yellow-600 via-yellow-400 to-yellow-700",
-    backPattern: "opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black to-transparent"
+    container: `${base} text-text-dark`,
+    header: "bg-blush/50 backdrop-blur-md border-b border-mint/20",
+    name: "text-text-dark font-display tracking-wide",
+    statsBadge: "bg-mint text-white shadow-sm",
+    artBorder: "border-4 border-blush rounded-2xl",
+    abilityBox: "bg-gray-50/80 border border-gray-100 rounded-xl",
+    footer: "bg-gray-50 text-gray-500 font-mono text-[9px]",
+    wishBox: "bg-blush/30 border-blush",
+    foil: true,
+    backGradient: "bg-gradient-to-br from-mint via-white to-blush",
+    backPattern: "opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-mint to-transparent"
   };
 
   const lowerTheme = themeName.toLowerCase();
 
   if (lowerTheme.includes("dark") || lowerTheme.includes("legendary") || lowerTheme.includes("prestige")) {
     styles = {
-      container: `${base} bg-slate-900 text-white border-[8px] border-indigo-900`,
-      header: "bg-indigo-950/90 border-b-2 border-purple-500/50",
-      name: "text-purple-100 font-serif tracking-wider",
-      statsBadge: "bg-purple-600 text-white shadow-[0_0_10px_rgba(147,51,234,0.5)]",
-      artBorder: "border-2 border-purple-500/50 shadow-[0_0_15px_rgba(0,0,0,0.5)]",
-      abilityBox: "bg-slate-800/60 border border-white/5",
-      footer: "bg-slate-950/80 text-purple-300 italic",
-      wishBox: "bg-indigo-900/40 border-purple-500/30",
+      container: `${base} bg-slate-900 text-white border-slate-800`,
+      header: "bg-black/40 backdrop-blur-md border-b border-white/10",
+      name: "text-mint font-display tracking-wider drop-shadow-[0_0_5px_rgba(0,201,167,0.8)]",
+      statsBadge: "bg-mint text-white shadow-[0_0_10px_rgba(0,201,167,0.5)]",
+      artBorder: "border-2 border-mint/50 shadow-[0_0_15px_rgba(0,0,0,0.5)] rounded-2xl",
+      abilityBox: "bg-black/40 border border-white/10 rounded-xl",
+      footer: "bg-black/60 text-mint/70 font-mono",
+      wishBox: "bg-mint/10 border-mint/20",
       foil: true,
-      backGradient: "bg-gradient-to-br from-indigo-900 via-purple-900 to-black",
-      backPattern: "opacity-30 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-purple-500 via-transparent to-purple-500"
+      backGradient: "bg-gradient-to-br from-slate-900 via-gray-900 to-black",
+      backPattern: "opacity-30 bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-mint via-transparent to-mint"
     };
   } else if (lowerTheme.includes("modern") || lowerTheme.includes("energy") || lowerTheme.includes("elemental")) {
     styles = {
-      container: `${base} bg-zinc-900 text-white border-[8px] border-cyan-500`,
-      header: "bg-cyan-900/80 border-b border-cyan-400",
-      name: "text-cyan-50 font-sans font-bold uppercase tracking-widest",
-      statsBadge: "bg-cyan-500 text-black font-bold",
-      artBorder: "border-2 border-cyan-400",
-      abilityBox: "bg-black/40 border border-cyan-500/20 backdrop-blur-sm",
-      footer: "bg-cyan-950/90 text-cyan-200",
-      wishBox: "bg-cyan-900/30 border-cyan-500/30",
+      container: `${base} bg-white text-text-dark border-mint`,
+      header: "bg-mint/10 backdrop-blur-md border-b border-mint/30",
+      name: "text-mint font-display uppercase tracking-widest",
+      statsBadge: "bg-mint text-white font-bold",
+      artBorder: "border-2 border-mint rounded-2xl",
+      abilityBox: "bg-gray-50 border border-mint/20 rounded-xl",
+      footer: "bg-mint/10 text-mint font-mono",
+      wishBox: "bg-mint/5 border-mint/20",
       foil: true,
-      backGradient: "bg-gradient-to-br from-cyan-900 via-black to-cyan-800",
-      backPattern: "opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,cyan_10px,cyan_11px)]"
+      backGradient: "bg-gradient-to-br from-mint via-white to-teal-100",
+      backPattern: "opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(0,201,167,0.1)_10px,rgba(0,201,167,0.1)_11px)]"
     };
   } else if (lowerTheme.includes("soft") || lowerTheme.includes("mythic") || lowerTheme.includes("dream")) {
     styles = {
-      container: `${base} bg-pink-50 text-slate-800 border-[8px] border-pink-200`,
-      header: "bg-white/60 border-b border-pink-100",
-      name: "text-pink-900 font-serif italic",
-      statsBadge: "bg-pink-300 text-white",
-      artBorder: "border-4 border-white/80 shadow-sm rounded-lg",
-      abilityBox: "bg-white/40 border border-white/60",
-      footer: "bg-pink-100/50 text-pink-800",
-      wishBox: "bg-white/50 border-pink-200/50",
+      container: `${base} bg-blush text-text-dark border-white`,
+      header: "bg-white/60 backdrop-blur-md border-b border-white",
+      name: "text-coral font-display italic",
+      statsBadge: "bg-coral text-white shadow-sm",
+      artBorder: "border-4 border-white shadow-sm rounded-2xl",
+      abilityBox: "bg-white/60 border border-white rounded-xl",
+      footer: "bg-white/50 text-coral/80 font-mono",
+      wishBox: "bg-white/50 border-white",
       foil: false,
-      backGradient: "bg-gradient-to-br from-pink-200 via-white to-pink-100",
-      backPattern: "opacity-40 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-pink-400 to-transparent"
+      backGradient: "bg-gradient-to-br from-blush via-white to-orange-50",
+      backPattern: "opacity-40 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-coral/20 to-transparent"
     };
   } else if (lowerTheme.includes("rainbow") || lowerTheme.includes("celebration")) {
     styles = {
-      container: `${base} bg-white text-slate-900 border-[8px] border-transparent bg-gradient-to-br from-red-100 via-yellow-100 to-blue-100`,
-      header: "bg-white/80 backdrop-blur-md",
-      name: "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 font-bold",
-      statsBadge: "bg-gradient-to-r from-orange-400 to-pink-500 text-white",
-      artBorder: "border-4 border-white shadow-lg",
-      abilityBox: "bg-white/60",
-      footer: "bg-white/80 text-slate-600",
-      wishBox: "bg-white/50 border-purple-200",
+      container: `${base} bg-white text-text-dark border-white bg-gradient-to-br from-mint/10 via-blush/20 to-coral/10`,
+      header: "bg-white/60 backdrop-blur-md border-b border-white/40",
+      name: "text-transparent bg-clip-text bg-gradient-to-r from-mint to-coral font-display font-bold",
+      statsBadge: "bg-gradient-to-r from-mint to-coral text-white shadow-md",
+      artBorder: "border-4 border-white shadow-lg rounded-2xl",
+      abilityBox: "bg-white/50 border border-white/60 rounded-xl",
+      footer: "bg-white/70 text-gray-500 font-mono",
+      wishBox: "bg-white/50 border-mint/20",
       foil: true,
-      backGradient: "bg-gradient-to-tr from-pink-300 via-purple-300 to-cyan-300",
+      backGradient: "bg-gradient-to-tr from-mint via-blush to-coral",
       backPattern: "opacity-50 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-white via-transparent to-white"
     };
   }

@@ -133,22 +133,27 @@ const App: React.FC = () => {
   }, [isExporting]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-stone-950 via-gray-900 to-black flex flex-col items-center justify-center p-4 font-sans overflow-x-hidden">
+    <div className="min-h-screen w-full bg-gradient-to-br from-white via-blush to-white flex flex-col items-center justify-center p-4 font-sans overflow-x-hidden relative text-text-dark">
+      {/* Floating Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-mint rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
+      <div className="absolute top-40 right-20 w-48 h-48 bg-coral rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-20 left-1/3 w-64 h-64 bg-blush rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-float" style={{ animationDelay: '4s' }}></div>
+
       <header className="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-10">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded bg-gradient-to-tr from-orange-500 to-rose-600 shadow-lg shadow-orange-500/50"></div>
-          <h1 className="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-rose-300">
-            OWN<span className="font-extrabold text-white">DECK</span>
+          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-mint to-coral shadow-[0_0_15px_rgba(0,201,167,0.4)] border-2 border-white"></div>
+          <h1 className="text-3xl font-display tracking-wider text-text-dark drop-shadow-sm">
+            OWN<span className="text-mint">DECK</span>
           </h1>
         </div>
       </header>
 
-      <main className="w-full flex flex-col items-center justify-center min-h-[80vh]">
+      <main className="w-full flex flex-col items-center justify-center min-h-[80vh] relative z-10">
         {step === 'input' && (
           <div className="w-full max-w-md animate-in fade-in zoom-in duration-500">
             <CardForm onSubmit={handleGenerate} isSubmitting={false} />
             {error && (
-              <div className="mt-4 p-4 bg-red-900/50 border border-red-500/50 rounded-lg text-red-200 text-sm text-center">
+              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm text-center font-bold shadow-sm">
                 {error}
               </div>
             )}
@@ -162,7 +167,7 @@ const App: React.FC = () => {
         {step === 'complete' && cardData && (
           <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 w-full">
             {/* Wrapper allows scrolling if screen is too small, but centers on large screens */}
-            <div className="w-full overflow-x-auto flex justify-center pb-4 px-4">
+            <div className="w-full overflow-x-auto flex justify-center pb-8 px-4 pt-4">
               <TradingCard ref={cardRef} data={cardData} image={cardImage} />
             </div>
             
@@ -170,30 +175,30 @@ const App: React.FC = () => {
                 <button
                 onClick={handleReset}
                 disabled={isExporting}
-                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium transition-all hover:scale-105 active:scale-95 backdrop-blur-sm disabled:opacity-50"
+                className="px-8 py-3 rounded-full bg-white hover:bg-gray-50 border-2 border-gray-200 text-text-dark font-bold tracking-wide transition-all hover:scale-105 active:scale-95 disabled:opacity-50 shadow-sm hover:shadow-md"
                 >
-                Forge Another
+                FORGE ANOTHER
                 </button>
                 <button
                 onClick={handleCopy}
                 disabled={isExporting}
-                className="px-6 py-3 rounded-full bg-rose-600/80 hover:bg-rose-500/80 text-white font-medium transition-all hover:scale-105 active:scale-95 shadow-lg shadow-rose-900/50 disabled:opacity-50 disabled:cursor-wait"
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-mint to-teal-400 hover:from-mint/90 hover:to-teal-400/90 text-white font-bold tracking-wide transition-all hover:scale-105 active:scale-95 shadow-[0_4px_15px_rgba(0,201,167,0.4)] disabled:opacity-50 disabled:cursor-wait border-2 border-white/20"
                 >
-                {isExporting ? 'Copying...' : 'Copy Both'}
+                {isExporting ? 'COPYING...' : 'COPY BOTH'}
                 </button>
                 <button
                 onClick={handleDownload}
                 disabled={isExporting}
-                className="px-6 py-3 rounded-full bg-orange-600/80 hover:bg-orange-500/80 text-white font-medium transition-all hover:scale-105 active:scale-95 shadow-lg shadow-orange-900/50 disabled:opacity-50 disabled:cursor-wait"
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-coral to-orange-400 hover:from-coral/90 hover:to-orange-400/90 text-white font-bold tracking-wide transition-all hover:scale-105 active:scale-95 shadow-[0_4px_15px_rgba(255,107,107,0.4)] disabled:opacity-50 disabled:cursor-wait border-2 border-white/20"
                 >
-                {isExporting ? 'Saving...' : 'Download Both'}
+                {isExporting ? 'SAVING...' : 'DOWNLOAD BOTH'}
                 </button>
             </div>
           </div>
         )}
       </main>
       
-      <footer className="py-4 text-xs text-stone-500 text-center w-full">
+      <footer className="py-6 text-xs text-text-dark/60 font-bold tracking-widest text-center w-full relative z-10 uppercase">
         Powered by Gemini • AI Generated Content may vary
       </footer>
     </div>
