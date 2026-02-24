@@ -1,0 +1,5 @@
+{
+  "name": "OwnDeck: AI Trading Card Generator",
+  "description": "Generate unique, collectible-style trading cards from your wishes using Google Gemini AI models for text and image generation.",
+  "requestFramePermissions": []
+}
